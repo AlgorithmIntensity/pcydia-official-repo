@@ -14,7 +14,7 @@ This repository contains useful Windows applications packaged in `.pcydia` forma
 |---------|----------|
 | 📦 Packages | 4 |
 | 🔄 Last updated | March 2026 |
-| 👤 Maintainer | @maxutko99 |
+| 👤 Maintainer | @AlgorithmIntensity |
 | 📥 Total downloads | — |
 
 ## 🔧 How to Add This Repository to PCydia
