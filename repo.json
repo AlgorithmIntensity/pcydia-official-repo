@@ -1,0 +1,9 @@
+{
+  "name": "PCydia",
+  "description": "Official PCydia repository!",
+  "maintainer": "Algorithm Intensity",
+  "website": "https://algorithmintensity.github.io/pcydia-official-repo",
+  "icon": "https://algorithmintensity.github.io/pcydia-official-repo/PCydiaIcon",
+  "lastUpdate": "2026-03-14T10:30:00Z",
+  "packages": 10
+}
