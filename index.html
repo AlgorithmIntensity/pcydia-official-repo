@@ -1,251 +1,154 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>PCydia Official Repository</title>
-    <meta name="repo-name" content="PCydia Official">
-    <meta name="repo-description" content="Official PCydia repository with useful Windows tools">
-    <meta name="repo-maintainer" content="Algorithm Intensity">
-    <meta name="repo-icon" content="https://algorithmintensity.github.io/pcydia-official-repo/icon.png">
-        <style>
+    <title>PCydia Repo</title>
+    <meta name="repo-name" content="PCydia Repo">
+    <meta name="repo-description" content="Useful Windows apps">
+    <meta name="repo-maintainer" content="maxutko99">
+    <style>
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
-            max-width: 1000px;
+            max-width: 900px;
             margin: 40px auto;
             padding: 20px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: #333;
+            background: #f0f2f5;
         }
-        .container {
+        .header {
             background: white;
+            padding: 20px;
             border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
         h1 {
-            color: #2c3e50;
-            border-bottom: 3px solid #3498db;
-            padding-bottom: 10px;
-            margin-top: 0;
+            color: #1a73e8;
+            margin: 0;
         }
         .repo-info {
-            background: #f8f9fa;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 20px 0;
-            border-left: 4px solid #3498db;
+            color: #5f6368;
+            margin-top: 10px;
+        }
+        .package-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 15px;
         }
         .package {
             background: white;
-            border-radius: 10px;
-            padding: 20px;
-            margin: 20px 0;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            border: 1px solid #e0e0e0;
-            transition: transform 0.3s;
+            border-radius: 12px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
         }
         .package:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
         }
         .package h3 {
-            margin: 0 0 15px 0;
-            color: #3498db;
-            font-size: 24px;
+            margin: 0 0 8px 0;
+            color: #1a73e8;
         }
         .package-meta {
-            background: #f8f9fa;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 15px 0;
-            font-family: 'Courier New', monospace;
-            font-size: 14px;
+            font-size: 13px;
+            color: #5f6368;
+            margin-bottom: 10px;
         }
-        .install-note {
-            background: #d4edda;
-            border: 1px solid #c3e6cb;
-            color: #155724;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 15px 0;
-        }
-        .warning-note {
-            background: #fff3cd;
-            border: 1px solid #ffeeba;
-            color: #856404;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 15px 0;
+        .package-meta span {
+            background: #f0f2f5;
+            padding: 3px 8px;
+            border-radius: 15px;
+            margin-right: 5px;
         }
         .download-btn {
             display: inline-block;
-            background: #3498db;
+            background: #1a73e8;
             color: white;
-            padding: 12px 30px;
+            padding: 8px 20px;
             text-decoration: none;
-            border-radius: 25px;
-            font-weight: bold;
-            margin: 10px 0;
-            transition: background 0.3s;
+            border-radius: 20px;
+            font-size: 14px;
+            margin-top: 10px;
         }
         .download-btn:hover {
-            background: #2980b9;
+            background: #1557b0;
         }
-        .feature-list {
-            columns: 2;
-            list-style-type: none;
-            padding: 0;
-        }
-        .feature-list li {
-            padding: 5px 0;
-            padding-left: 25px;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="%233498db"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>') left center no-repeat;
-            background-size: 16px;
-        }
-        code {
-            background: #e9ecef;
-            padding: 2px 5px;
-            border-radius: 3px;
-            font-family: 'Courier New', monospace;
+        table {
+            display: none;
         }
         footer {
             text-align: center;
             margin-top: 30px;
-            color: #7f8c8d;
+            color: #5f6368;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Данные для PCydia (скрытая таблица) -->
-        <table style="display:none" id="packages-data">
-            <tr><td>Winaero Tweaker</td><td>1.63</td><td>System Utilities</td><td>3.2MB</td><td>debs/winaerotweaker.pcydia</td></tr>
-        </table>
-        
-        <h1>📦 PCydia Official Repository</h1>
-        
+    <!-- Данные для PCydia (скрытая таблица) -->
+    <table id="packages-data">
+        <tr><td>7-Zip</td><td>24.09</td><td>Архиваторы</td><td>1.6 MB</td><td>debs/7zip.pcydia</td></tr>
+        <tr><td>Everything</td><td>1.4.1</td><td>Утилиты</td><td>1.9 MB</td><td>debs/everything.pcydia</td></tr>
+        <tr><td>Firefox</td><td>136.0</td><td>Браузеры</td><td>0.5 MB</td><td>debs/firefox.pcydia</td></tr>
+        <tr><td>Steam</td><td>2.10.91</td><td>Игры</td><td>2.3 MB</td><td>debs/steam.pcydia</td></tr>
+    </table>
+
+    <div class="header">
+        <h1>📦 PCydia Repository</h1>
         <div class="repo-info">
-            <p><strong>📌 Repository:</strong> PCydia Official</p>
-            <p><strong>👤 Maintainer:</strong> Algorithm Intensity</p>
-            <p><strong>📝 Description:</strong> Official PCydia repository with useful Windows tools and utilities</p>
-            <p><strong>🔗 URL:</strong> <code>https://algorithmintensity.github.io/pcydia-official-repo/</code></p>
+            <p>📌 URL: <code>https://ваш-репозиторий.github.io/repo/</code></p>
+            <p>📦 Пакетов: 4 | 👤 Maintainer: maxutko99</p>
         </div>
-        
-        <h2>📥 Available Packages</h2>
-        
-        <div class="package">
-            <h3>🔧 Winaero Tweaker 1.63</h3>
-            
-            <div class="package-meta">
-                <strong>Package ID:</strong> Winaero Tweaker<br>
-                <strong>Version:</strong> 1.63<br>
-                <strong>Category:</strong> System Utilities<br>
-                <strong>Size:</strong> 3.2 MB<br>
-                <strong>File:</strong> <code>debs/winaero-tweaker.pcydia</code>
-            </div>
-            
-            <p><strong>Description:</strong> Winaero Tweaker is a powerful system utility that lets you tweak and customize hidden settings in Windows. It combines hundreds of useful tweaks in one portable application.</p>
-            
-            <h4>✨ Key Features:</h4>
-            <ul class="feature-list">
-                <li>Disable telemetry and data collection</li>
-                <li>Customize context menu</li>
-                <li>Tweak Windows appearance</li>
-                <li>Manage startup programs</li>
-                <li>Classic personalization panels</li>
-                <li>God Mode and other hidden folders</li>
-                <li>Disable Cortana and web search</li>
-                <li>Control Windows updates</li>
-                <li>Customize taskbar and system tray</li>
-                <li>Remove OneDrive completely</li>
-                <li>Classic Alt+Tab dialog</li>
-                <li>And 200+ more tweaks!</li>
-            </ul>
-            
-            <div class="install-note">
-                <strong>✅ Auto-Install Information:</strong>
-                <p>This package includes <code>install.pconf</code> for automatic setup:</p>
-                <ul>
-                    <li>📁 Installed to: <code>%LOCALAPPDATA%\PCydia\apps\Winaero Tweaker\</code></li>
-                    <li>🖥️ Desktop shortcut will be created automatically</li>
-                    <li>⚡ Portable version - no installation required</li>
-                    <li>🔧 No administrator rights needed</li>
-                </ul>
-            </div>
-            
-            <div class="warning-note">
-                <strong>⚠️ Important Warning:</strong>
-                <p>Winaero Tweaker modifies system settings. While it's safe when used carefully, always:</p>
-                <ul>
-                    <li>Create a system restore point before making changes</li>
-                    <li>Read the description of each tweak before applying</li>
-                    <li>Don't change settings you don't understand</li>
-                </ul>
-            </div>
-            
-            <h4>📋 How to install with PCydia:</h4>
-            <ol>
-                <li>Open PCydia and go to "Sources" tab</li>
-                <li>Add this repository URL: <code>https://algorithmintensity.github.io/pcydia-official-repo/</code></li>
-                <li>Click "Refresh" to load packages</li>
-                <li>Go to "Packages" tab and find "Winaero Tweaker"</li>
-                <li>Select it and click "Install"</li>
-                <li>PCydia will automatically:
-                    <ul>
-                        <li>Download the package</li>
-                        <li>Extract to the apps folder</li>
-                        <li>Create desktop shortcut</li>
-                    </ul>
-                </li>
-            </ol>
-            
-            <a href="debs/winaero-tweaker.pcydia" class="download-btn">📥 Download winaero-tweaker.pcydia</a>
-        </div>
-        
-        <h2>📖 How to use PCydia</h2>
-        
-        <div class="repo-info">
-            <h4>Quick Start Guide:</h4>
-            <ol>
-                <li><strong>Add Repository:</strong> Go to Sources tab → Add Source → Enter URL</li>
-                <li><strong>Refresh:</strong> Click Refresh button to load packages</li>
-                <li><strong>Browse:</strong> Browse packages by category or use search</li>
-                <li><strong>Install:</strong> Select package and click Install</li>
-                <li><strong>Run:</strong> Find installed apps in <code>%LOCALAPPDATA%\PCydia\apps\</code></li>
-            </ol>
-            
-            <h4>📂 Installation Paths:</h4>
-            <ul>
-                <li><strong>Apps:</strong> <code>%LOCALAPPDATA%\PCydia\apps\</code></li>
-                <li><strong>Downloads:</strong> <code>%LOCALAPPDATA%\PCydia\downloads\</code></li>
-                <li><strong>Database:</strong> <code>%LOCALAPPDATA%\PCydia\installed.db</code></li>
-            </ul>
-            
-            <h4>🔧 Package Format (.pcydia):</h4>
-            <p>PCydia packages are ZIP archives that can contain:</p>
-            <ul>
-                <li>Program files and executables</li>
-                <li><code>install.pconf</code> - auto-install configuration file</li>
-                <li>Additional resources and dependencies</li>
-            </ul>
-        </div>
-        
-        <h2>🔮 Coming Soon</h2>
-        <div class="package" style="opacity: 0.8;">
-            <h3>🛠️ Future Packages</h3>
-            <ul>
-                <li><strong>PowerToys</strong> - Microsoft's power user tools</li>
-                <li><strong>ExplorerPatcher</strong> - Customize Windows interface</li>
-                <li><strong>Autoruns</strong> - Advanced startup manager</li>
-                <li><strong>Process Explorer</strong> - Task manager replacement</li>
-                <li><strong>FFmpeg</strong> - Multimedia framework</li>
-            </ul>
-            <p>Stay tuned for updates!</p>
-        </div>
-        
-        <footer>
-            <p>PCydia Official Repository | Maintained by Algorithm Intensity | © 2026</p>
-            <p>For support, issues, or package requests, contact the maintainer.</p>
-        </footer>
     </div>
+
+    <h2>Доступные пакеты</h2>
+    
+    <div class="package-grid">
+        <!-- 7-Zip -->
+        <div class="package">
+            <h3>🗜️ 7-Zip 24.09</h3>
+            <div class="package-meta">
+                <span>Архиваторы</span>
+                <span>1.6 MB</span>
+            </div>
+            <p>Лучший архиватор с высокой степенью сжатия. Поддерживает 7z, ZIP, RAR и другие форматы.</p>
+            <a href="debs/7zip.pcydia" class="download-btn">⬇️ Скачать</a>
+        </div>
+
+        <!-- Everything -->
+        <div class="package">
+            <h3>🔍 Everything 1.4.1</h3>
+            <div class="package-meta">
+                <span>Утилиты</span>
+                <span>1.9 MB</span>
+            </div>
+            <p>Мгновенный поиск файлов на компьютере. Находит всё за секунды.</p>
+            <a href="debs/everything.pcydia" class="download-btn">⬇️ Скачать</a>
+        </div>
+
+        <!-- Firefox -->
+        <div class="package">
+            <h3>🦊 Firefox 136.0</h3>
+            <div class="package-meta">
+                <span>Браузеры</span>
+                <span>0.5 MB</span>
+            </div>
+            <p>Быстрый и приватный браузер с открытым кодом.</p>
+            <a href="debs/firefox.pcydia" class="download-btn">⬇️ Скачать</a>
+        </div>
+
+        <!-- Steam -->
+        <div class="package">
+            <h3>🎮 Steam 2.10.91</h3>
+            <div class="package-meta">
+                <span>Игры</span>
+                <span>2.3 MB</span>
+            </div>
+            <p>Крупнейшая игровая платформа. Установщик Steam.</p>
+            <a href="debs/steam.pcydia" class="download-btn">⬇️ Скачать</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>PCydia Repository | Добавляй свои пакеты через zip2pcydia.bat</p>
+    </footer>
 </body>
 </html>
