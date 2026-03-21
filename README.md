@@ -23,7 +23,7 @@ This repository contains useful Windows applications packaged in `.pcydia` forma
 2. Go to the **"Sources"** tab
 3. Click **"Add"**
 4. Enter the URL:
-https://algorithmintensity.github.io/pcydia-repo/
+https://algorithmintensity.github.io/pcydia-official-repo/
 
 5. Click **"Refresh"**
 
